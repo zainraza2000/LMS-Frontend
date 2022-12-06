@@ -245,7 +245,7 @@
                                             @Html.ActionLink("View"
                 ,"Index"
                 ,"Feed"
-                , new {id=card.Id}
+                , new {id=card.Id,coursename=card?.Course?.CourseName}
                 ,new {@class="btn btn-sm btn-outline-secondary"}
                 )
                                         </div>
