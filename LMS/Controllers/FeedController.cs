@@ -70,10 +70,11 @@ namespace LMS.Controllers
         }
 
         [Authorize]
-        [HttpGet("[controller]/Feed/{id:int}")]
-        public async Task<IActionResult> Index(int id)
+        [HttpGet("[controller]/Feed/{id:int}/{coursename}")]
+        public async Task<IActionResult> Index(int id,string coursename)
         {
             //int.TryParse(id , out int classId);
+            Console.WriteLine($"{id} {coursename}");
             int classId = id;
           
             if (classId == 0) {
@@ -107,6 +108,7 @@ namespace LMS.Controllers
             if (identity == "user") {
                 fileRedirectionUrl = GlobalInfo.getAnnouncementsFileDownloadUrlUser.Replace("[token]", token);
             }
+            ViewData["coursename"] = coursename;
             ViewData["downloadUrl"] = fileRedirectionUrl;
             ViewBag.ClassID = id;
             ViewBag.Announcements = announcements;

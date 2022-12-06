@@ -4,6 +4,7 @@
     ViewData["Title"] = "Feed Page";
     string role = ViewData["role"] as string;
     string fileDownloadUrl = ViewData["downloadUrl"] as string;
+    string coursename = ViewData["coursename"]==null ? "":ViewData["coursename"] as string;
     List<AnnouncementResponse> announcements = ViewBag.Announcements;
     int classID = ViewBag.ClassID;
 
@@ -249,7 +250,8 @@
           
                  <div class="card-body">
                 @*<h2 class="align-items-center d-flex justify-content-center">Information Security</h2>*@
-                <h1>@announcements[0]?.Class?.Course?.CourseName</h1>
+
+                <h1>@coursename</h1>
                         @if (role.ToLower() != "user")
                         {
                 <div class="d-flex justify-content-between align-items-center" style="margin-top:40px">
